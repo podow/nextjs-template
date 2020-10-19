@@ -10,12 +10,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
-  distDir: 'build',
+  generateBuildId: async () => {
+    return require('child_process')
+      .execSync('git rev-parse HEAD')
+      .toString()
+      .trim();
+  },
   webpack(config, _) {
     config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
     config.resolve.alias['root'] = path.join(__dirname, './');
-    config.resolve.alias['app'] = path.join(__dirname, './app');
-    config.resolve.alias['store'] = path.join(__dirname, './store');
+    config.resolve.alias['components'] = path.join(__dirname, './app');
+    config.resolve.alias['store'] = path.join(__dirname, './components');
     config.resolve.alias['helpers'] = path.join(__dirname, './helpers');
     return config;
   },
