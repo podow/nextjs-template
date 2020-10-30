@@ -20,17 +20,14 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noImplicitAny": false,
-      "experimentalDecorators": true,
-      "paths": {
-        "style/*": [ "style/*" ]
-      }
+      "experimentalDecorators": true
     },
     "include": [
       "."
     ],
     "exclude": [
       "tests/*",
-      "static",
+      "public",
       "node_modules",
       "**/*.spec.ts",
       "**/*.spec.tsx",

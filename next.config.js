@@ -10,12 +10,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
-  generateBuildId: async () => {
-    return require('child_process')
-      .execSync('git rev-parse HEAD')
-      .toString()
-      .trim();
-  },
+  trailingSlash: true,
   webpack(config, _) {
     config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
     config.resolve.alias['root'] = path.join(__dirname, './');
