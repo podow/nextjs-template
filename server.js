@@ -4,7 +4,7 @@ const express = require('express');
 const cacheableResponse = require('cacheable-response');
 const bodyParser = require('body-parser');
 
-require('dotenv').config({ path: path.resolve(`${__dirname}/../.env`) });
+require('dotenv').config({ path: path.resolve(`${__dirname}/.env`) });
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production';
